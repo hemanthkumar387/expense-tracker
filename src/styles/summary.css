@@ -25,6 +25,9 @@
   margin: 15px auto;
   box-shadow: 0 0 8px #ddd;
   gap: 10px;
+  /* 👇 Add your font style here */
+  font-size: 16px;
+  color: #333;
 }
 
 .dropdown-summary-container {
