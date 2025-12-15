@@ -25,15 +25,15 @@ export default function CalendarView({ expenses, onAdd, onUpdate, onDelete }) {
   };
 
   const tileContent = ({ date }) => {
-    const dateStr = formatDate(date);
-    const dayTotal = expenses
-      .filter((e) => e.date === dateStr)
-      .reduce((a, b) => a + Number(b.amount), 0);
+  const dateStr = formatDate(date);
 
-    return dayTotal > 0 ? (
-      <div className="day-total-tile">₹{dayTotal}</div>
-    ) : null;
-  };
+  const hasSpent = expenses.some((e) => e.date === dateStr);
+
+  return hasSpent ? (
+    <div className="spent-dot">✅</div>
+  ) : null;
+};
+
 
   return (
     <div className="calendar-container">

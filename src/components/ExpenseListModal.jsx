@@ -9,22 +9,32 @@ export default function ExpenseListModal({
   onDelete,
 }) {
   const dayExpenses = expenses.filter((e) => e.date === date);
+  const totalSpent = dayExpenses.reduce((a, b) => a + Number(b.amount), 0);
 
   return (
     <div className="options-overlay">
       <div className="options-box">
 
+        {/* Back Button */}
         <button className="back-btn" onClick={onBack}>← Back</button>
 
         <h3>Expenses – {date}</h3>
 
+        {/* Show Total Spent */}
+        {dayExpenses.length > 0 && (
+          <div className="day-total-display">
+            Total Spent: ₹{totalSpent}
+          </div>
+        )}
+
+        {/* Expense List */}
         {dayExpenses.length === 0 ? (
           <p>No expenses added.</p>
         ) : (
           <ul className="expense-list">
             {dayExpenses.map((e) => (
               <li key={e.id} className="expense-item">
-                <div>
+                <div className="expense-info">
                   <strong>₹{e.amount}</strong> – {e.category}
                   {e.note && <span> ({e.note})</span>}
                 </div>
@@ -36,6 +46,7 @@ export default function ExpenseListModal({
                   >
                     Edit
                   </button>
+
                   <button
                     className="delete-btn"
                     onClick={() => onDelete(e.id)}
@@ -48,7 +59,10 @@ export default function ExpenseListModal({
           </ul>
         )}
 
-        <button className="close-options" onClick={onClose}>Close</button>
+        {/* Close Button */}
+        <button className="close-options" onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
   );
