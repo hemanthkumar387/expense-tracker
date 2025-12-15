@@ -1,0 +1,29 @@
+.calendar-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.react-calendar {
+    width: 100% !important;
+    border-radius: 10px;
+}
+
+.day-total-tile {
+    background: #ff4757;
+    color: white;
+    padding: 3px 5px;
+    font-size: 12px;
+    margin-top: 4px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.react-calendar__tile {
+    padding: 10px 2px;
+}
+
+@media (max-width:480px) {
+    .day-total-tile {
+        font-size: 8px;
+    }
+}

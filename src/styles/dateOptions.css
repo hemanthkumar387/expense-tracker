@@ -1,0 +1,96 @@
+.options-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.options-box {
+  background: #fff;
+  width: 300px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.option-btn {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.option-btn.add {
+  background: #1e90ff;
+}
+
+.close-options {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+
+.expense-list {
+  text-align: left;
+  list-style: none;
+  padding-left: 0;
+}
+
+.expense-list li {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.back-btn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  background: #777;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.edit-btn {
+  background: #1e90ff;
+  padding: 5px 8px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #ff4757;
+  padding: 5px 8px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
