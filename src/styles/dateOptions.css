@@ -4,21 +4,27 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 20;
+
+  animation: fadeIn 0.3s ease-out;
 }
 
 .options-box {
   background: #fff;
   width: 300px;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 22px;
+  border-radius: 14px;
   text-align: center;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  animation: slideUp 0.3s ease-out;
 }
 
+/* Buttons */
 .option-btn {
   width: 100%;
   padding: 12px;
@@ -29,20 +35,40 @@
   cursor: pointer;
   border-radius: 8px;
   font-size: 15px;
+
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.option-btn:hover {
+  background: #444;
+  transform: translateY(-2px);
 }
 
 .option-btn.add {
   background: #1e90ff;
 }
 
+.option-btn.add:hover {
+  background: #0f7ae6;
+}
+
 .close-options {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-  border: 1px solid #aaa;
+  border: 1px solid #bbb;
   cursor: pointer;
+  background: #f1f1f1;
+  border-radius: 8px;
+
+  transition: background 0.2s ease;
 }
 
+.close-options:hover {
+  background: #e5e5e5;
+}
+
+/* Expense List */
 .expense-list {
   text-align: left;
   list-style: none;
@@ -50,8 +76,23 @@
 }
 
 .expense-list li {
-  margin: 6px 0;
+  margin: 8px 0;
   font-size: 15px;
+
+  padding: 8px 10px;
+  background: #fafafa;
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid #eee;
+  transition: box-shadow 0.2s ease;
+}
+
+.expense-list li:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .back-btn {
@@ -63,8 +104,16 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+
+  transition: background 0.25s ease, transform 0.15s ease;
 }
 
+.back-btn:hover {
+  background: #666;
+  transform: translateY(-2px);
+}
+
+/* Expense item row */
 .expense-item {
   display: flex;
   justify-content: space-between;
@@ -72,25 +121,48 @@
   margin: 8px 0;
 }
 
+/* Buttons inside list */
 .expense-actions {
   display: flex;
-  gap: 6px;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px 10px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, opacity 0.2s ease;
 }
 
 .edit-btn {
   background: #1e90ff;
-  padding: 5px 8px;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #0f7ae6;
+  transform: translateY(-2px);
 }
 
 .delete-btn {
   background: #ff4757;
-  padding: 5px 8px;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #e84352;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }

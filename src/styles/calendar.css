@@ -1,29 +1,102 @@
 .calendar-container {
     max-width: 600px;
     margin: auto;
+    padding: 10px;
 }
 
+/* Main calendar body */
 .react-calendar {
     width: 100% !important;
+    border-radius: 14px;
+    border: none;
+    background: #ffffff;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Top navigation (month, prev/next) */
+.react-calendar__navigation button {
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 16px;
+    background: transparent;
+    border-radius: 8px;
+    transition: background 0.25s ease;
+}
+
+.react-calendar__navigation button:hover {
+    background: #eef4ff;
+}
+
+/* Weekday labels (Mon, Tue...) */
+.react-calendar__month-view__weekdays {
+    background: #f7f9fc;
+    font-weight: 600;
+    color: #5a5a5a;
+}
+
+/* Each tile */
+.react-calendar__tile {
+    padding: 12px 4px;
+    border-radius: 10px;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+/* Hover effect */
+.react-calendar__tile:hover {
+    background: #f0f7ff;
+    transform: translateY(-2px);
+}
+
+/* TODAY highlight */
+.react-calendar__tile--now {
+    background: #e6f2ff !important;
+    border: 1px solid #b6d8ff !important;
+    color: #005bb5 !important;
     border-radius: 10px;
 }
 
+/* ACTIVE selected date */
+.react-calendar__tile--active {
+    background: #3a7afe !important;
+    color: white !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(58, 122, 254, 0.4);
+}
+
+/* Day total tile (soft orange) */
 .day-total-tile {
-    background: #ff4757;
-    color: white;
-    padding: 3px 5px;
+    background: #AEDEFC;
+    color: rgb(0, 0, 0);
+    padding: 4px 6px;
     font-size: 12px;
-    margin-top: 4px;
-    border-radius: 4px;
+    margin-top: 6px;
+    border-radius: 6px;
     text-align: center;
+    box-shadow: 0 2px 6px rgba(61, 146, 251, 0.5);
+    transition: transform 0.15s ease;
 }
 
-.react-calendar__tile {
-    padding: 10px 2px;
+.day-total-tile:hover {
+    transform: scale(1.07);
 }
 
-@media (max-width:480px) {
+/* Mobile responsiveness */
+@media (max-width: 480px) {
     .day-total-tile {
         font-size: 8px;
+        padding: 3px 4px;
     }
+
+    .react-calendar__tile {
+        padding: 8px 2px;
+    }
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

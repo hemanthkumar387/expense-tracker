@@ -4,31 +4,60 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+
+  /* Smooth fade-in effect */
+  animation: fadeIn 0.3s ease-out;
 }
 
 .modal-box {
   width: 320px;
   background: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
+
+  /* Modern card look */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  animation: slideUp 0.3s ease-out;
 }
 
 .modal-box input,
 .modal-box textarea {
   width: 93%;
   margin: 8px 0;
-  padding: 8px;
+  padding: 10px;
+
+  /* Smooth borders + focus */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.modal-box input:focus,
+.modal-box textarea:focus {
+  border-color: #000;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
 .modal-box select {
   width: 100%;
   margin: 8px 0;
-  padding: 8px;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.modal-box select:focus {
+  border-color: #000;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
 .add-btn {
@@ -39,10 +68,43 @@
   border: none;
   margin-top: 10px;
   cursor: pointer;
+
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.add-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.add-btn:active {
+  transform: scale(0.97);
 }
 
 .close-btn {
   margin-top: 10px;
   width: 100%;
   padding: 10px;
+  cursor: pointer;
+
+  background: #eee;
+  border-radius: 6px;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #ddd;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
