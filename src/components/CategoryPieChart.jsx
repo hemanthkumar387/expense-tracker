@@ -14,13 +14,11 @@ export default function CategoryPieChart({ expenses }) {
     categoryMap[cat] += amt;
   });
 
-  // Convert to Recharts data
   const data = Object.keys(categoryMap).map((cat) => ({
     name: cat,
     value: categoryMap[cat],
   }));
 
-  // Colors for slices
   const COLORS = [
     "#1E90FF",
     "#FF6347",
@@ -31,26 +29,57 @@ export default function CategoryPieChart({ expenses }) {
     "#F39C12",
   ];
 
+  // ⭐ Custom label renderer with automatic font-size adjustment
+  const renderCustomLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    name,
+    value,
+  }) => {
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.55;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    // Responsive font size: adjust based on outerRadius
+    let fontSize = outerRadius * 0.12; // auto-scaling
+    if (fontSize < 10) fontSize = 10;  // minimum readable
+    if (fontSize > 18) fontSize = 18;  // max to avoid crowding
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor="middle"
+        dominantBaseline="central"
+        style={{ fontSize, fontWeight: "bold" }}
+      >
+        ₹{value}
+      </text>
+    );
+  };
+
   return (
     <div className="piechart-container">
       <h3>Expense By Category</h3>
 
-      {/* Responsive container makes the chart scale automatically */}
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
             data={data}
             dataKey="value"
             nameKey="name"
-            outerRadius={"80%"}
-            innerRadius={0}
-            label
+            outerRadius="80%"
+            label={renderCustomLabel}  // <-- custom label
+            labelLine={false}
           >
             {data.map((entry, index) => (
-              <Cell
-                key={index}
-                fill={COLORS[index % COLORS.length]}
-              />
+              <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
 

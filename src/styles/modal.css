@@ -19,8 +19,13 @@
 }
 
 .modal-box input,
-.modal-box select,
 .modal-box textarea {
+  width: 93%;
+  margin: 8px 0;
+  padding: 8px;
+}
+
+.modal-box select {
   width: 100%;
   margin: 8px 0;
   padding: 8px;
