@@ -38,7 +38,6 @@ export default function ExpenseModal({ date, onClose, onAdd, onBack }) {
           <option>Food</option>
           <option>Travel</option>
           <option>Shopping</option>
-          <option>Clothes</option>
           <option>Entertainment</option>
           <option>Grocery</option>
           <option>Other</option>
