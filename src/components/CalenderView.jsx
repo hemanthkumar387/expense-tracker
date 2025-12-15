@@ -43,6 +43,7 @@ export default function CalendarView({ expenses, onAdd, onUpdate, onDelete }) {
       {showOptions && (
         <DateOptionsModal
           date={selectedDate}
+          expenses={expenses}
           onClose={() => setShowOptions(false)}
           onShowList={() => {
             setShowOptions(false);
